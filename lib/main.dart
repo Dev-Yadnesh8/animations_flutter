@@ -1,4 +1,4 @@
-import 'package:animation_starter_code/implicit_examples/animated_color_pallete.dart';
+import 'package:animations_flutter/implicit_examples/animated_color_pallete.dart';
 import 'package:flutter/material.dart';
 
 void main() {
