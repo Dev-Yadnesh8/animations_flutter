@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 class PulsatingCircleAnimation extends StatelessWidget {
   const PulsatingCircleAnimation({super.key});
-  final double size = 200;
 
   @override
   Widget build(BuildContext context) {
@@ -11,20 +10,32 @@ class PulsatingCircleAnimation extends StatelessWidget {
         title: const Text('Pulsating Circle Animation'),
       ),
       body: Center(
-        child: Container(
-          width: size,
-          height: size,
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            color: Colors.blue,
-            boxShadow: [
-              BoxShadow(
-                color: Colors.blue.withOpacity(0.5),
-                blurRadius: size,
-                spreadRadius: size / 2,
-              ),
-            ],
-          ),
+        child: TweenAnimationBuilder<double>(
+          tween: Tween(begin: 0,end: 200),
+          duration: Duration(milliseconds: 8000),
+          builder: (context, value, child) {
+            return Container(
+            width: value,
+            height: value,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: Colors.red,
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.yellow.withOpacity(0.9),
+                  blurRadius: value,
+                  spreadRadius: value / 2,
+                ),
+                BoxShadow(
+                  color: Colors.red.withOpacity(0.7),
+                  blurRadius: value,
+                  spreadRadius: value / 2,
+                ),
+              ],
+            ),
+            child: child,
+          );
+          },child: Text("Hello Duniya!!"),
         ),
       ),
     );
